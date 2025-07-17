@@ -41,8 +41,9 @@ test('login and create order', async ({}) => {
   await orderCreationPage.comment.fill('test')
   await orderCreationPage.orderButton.click()
   await expect.soft(orderCreationPage.popUpWindow).toBeVisible()
-  await expect.soft(orderCreationPage.popUpWindow).toHaveText('×Order has been created!Tracking code: undefinedok')
-
+  await expect
+    .soft(orderCreationPage.popUpWindow)
+    .toHaveText('×Order has been created!Tracking code: undefinedok')
 })
 
 test('logout', async ({}) => {
@@ -51,5 +52,4 @@ test('logout', async ({}) => {
   const userInputText = await authPage.usernameField.getAttribute('placeholder')
   await expect.soft(authPage.signInButton).toBeVisible()
   expect.soft(userInputText).toBe('Login')
-
 })
